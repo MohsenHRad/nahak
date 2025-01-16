@@ -226,13 +226,22 @@
                         </div>
                     </div>
 
-                    <a class="login" href="{% url 'login_page' %}">
-                        <svg>
-                            <use href="static/icons.svg#profile"></use>
-                        </svg>
-                        <span>ورود و ثبت نام</span>
-                    </a>
+                    {% if user.is_authenticated %}
+                        <a class="login" href="{% url 'login_page' %}">
+                            <svg>
+                                <use href="static/icons.svg#profile"></use>
+                            </svg>
+                            <span>{{ user.username }}</span>
+                        </a>
+                    {% else %}
+                        <a class="login" href="{% url 'login_page' %}">
+                            <svg>
+                                <use href="static/icons.svg#profile"></use>
+                            </svg>
+                            <span>ورود و ثبت نام</span>
+                        </a>
 
+                    {% endif %}
                     <a class="job-re" href="#">
                         <span>درخواست شغل</span>
                         <svg>
