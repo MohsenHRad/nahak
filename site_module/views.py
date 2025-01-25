@@ -91,3 +91,4 @@ class LoginView(View):
         }
 
         return render(request, 'login_page.html', context)
+
