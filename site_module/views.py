@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.http import HttpRequest, Http404, HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -92,3 +92,8 @@ class LoginView(View):
 
         return render(request, 'login_page.html', context)
 
+
+def logout_user(request: HttpRequest):
+    user = request.user
+    logout(request)
+    return redirect(reverse('home_page'))
